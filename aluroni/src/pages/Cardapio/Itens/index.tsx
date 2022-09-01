@@ -4,9 +4,9 @@ import styles from "./Itens.module.scss";
 import { useEffect, useState } from "react";
 
 interface Props {
-    busca: string;
-    filtro: number | null;
-    ordenador: string;
+	busca: string;
+	filtro: number | null;
+	ordenador: string;
 }
 
 export default function Itens(props: Props) {
@@ -38,10 +38,7 @@ export default function Itens(props: Props) {
 	}
 
 	useEffect(() => {
-		const novaLista = cardapio.filter
-		(
-			item => testaBusca(item.title) && testaFiltro(item.category.id)
-		);
+		const novaLista = cardapio.filter(item => testaBusca(item.title) && testaFiltro(item.category.id));
 		setLista(ordenar(novaLista));
 	}, [busca, filtro, ordenador]);
 
