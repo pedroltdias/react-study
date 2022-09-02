@@ -1,13 +1,16 @@
 import styles from "./Item.module.scss";
-import cardapio from "data/cardapio.json";
-import classNames from "classnames";
+import { Prato } from "types/Prato";
+import TagsPrato from "components/TagsPrato";
+import { useNavigate } from "react-router-dom";
 
-type Props = typeof cardapio[0];
+type Props = Prato;
 
 export default function Item(props: Props) {
-	const { title, description, category, serving, size, price, photo } = props;
+	const { id, title, description, photo } = props;
+	const navigate = useNavigate();
+
 	return (
-		<div className={styles.item}>
+		<div className={styles.item} onClick={() => navigate(`/prato/${id}`)}>
 			<div className={styles.item__imagem}>
 				<img src={photo} alt={title} />
 			</div>
@@ -16,19 +19,7 @@ export default function Item(props: Props) {
 					<h2>{title}</h2>
 					<p>{description}</p>
 				</div>
-				<div className={styles.item__tags}>
-					<div className={
-						classNames(
-							{
-								[styles.item__tipo]: true,
-								[styles[`item__tipo__${category.label.toLowerCase()}`]]: true,
-							}
-						)
-					}>{category.label}</div>
-					<div className={styles.item__porcao}>{size}g</div>
-					<div className={styles.item__qtdpessoas}>Serve {serving} pessoa{serving === 1 ? "" : "s"}</div>
-					<div className={styles.item__valor}>R$ {price.toFixed(2)}</div>
-				</div>
+				<TagsPrato {...props} />
 			</div>
 		</div>
 	);
