@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import AdministracaoRestaurantes from './paginas/AdministracaoRestaurantes';
-import FormularioRestaurante from './paginas/AdministracaoRestaurantes/FormularioRestaurante';
+import AdministracaoRestaurantes from './paginas/Administracao/Restaurantes';
+import FormularioRestaurante from './paginas/Administracao/Restaurantes/FormularioRestaurante';
 import Home from './paginas/Home';
 import VitrineRestaurantes from './paginas/VitrineRestaurantes';
 
